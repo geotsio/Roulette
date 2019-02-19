@@ -1,0 +1,320 @@
+* {
+  outline: none;
+  cursor: pointer;
+}
+
+.row {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.outer {
+  margin-top: 30px;
+  border: 2px solid #110702;
+  width: 1140px;
+  height: 500px;
+  border-radius: 20%;
+  background-color: #1a0800;
+  background-image: url("https://www.transparenttextures.com/patterns/rocky-wall.png");
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.inner {
+  width: 1050px;
+  height: 400px;
+  border: 2px solid #3b1701;
+  border-radius: 20%;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #001f0e;
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  margin: 50px auto;
+}
+
+body {
+  background-color: #000703;
+  background-image: url("https://www.transparenttextures.com/patterns/washi.png");
+  font-family: "Noto Serif KR", sans-serif;
+}
+
+.numbers td {
+  border: 2px solid rgb(88, 75, 2);
+  width: 60px;
+  height: 60px;
+}
+
+.numbers {
+  position: absolute;
+  border-collapse: collapse;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+.number {
+  text-align: center;
+  color: white;
+  border: 1px solid #001f0e00;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 190%;
+  background-color: rgb(122, 2, 2);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.black {
+  background-color: black;
+}
+
+.number0 {
+  background-color: #001f0e00;
+}
+
+.double,
+.quadrants,
+.threes {
+  cursor: pointer;
+}
+
+.useless {
+  visibility: hidden;
+}
+
+.tables-wrapper {
+  position: relative;
+  height: 500px;
+  margin-top: -50px;
+  border: 5px solid white;
+  width: 1050px;
+}
+
+.dozen {
+  border: 2px solid rgb(88, 75, 2);
+  text-align: center;
+  width: 70%;
+  height: 70%;
+  margin-left: 35px;
+  color: rgb(88, 75, 2);
+  font-size: 150%;
+}
+
+.eighteen,
+.odd,
+.even {
+  border: 2px solid rgb(88, 75, 2);
+  text-align: center;
+  width: 40%;
+  height: 70%;
+  color: rgb(88, 75, 2);
+  font-size: 150%;
+}
+
+.eighteen1,
+.odd {
+  float: left;
+  margin-left: 10px;
+}
+.eighteen2,
+.even {
+  float: right;
+  margin-right: 10px;
+}
+
+.rows {
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  color: rgb(88, 75, 2);
+  font-size: 120%;
+  text-align: center;
+  border: 2px solid rgb(88, 75, 2);
+  height: auto;
+  width: 96%;
+  padding: 3px 3px;
+  margin-left: 1px;
+  margin-top: 0.5px;
+}
+
+/* ============================================================COLOR BUTTONS======================================================================= */
+.black-button,
+.red-button {
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-left: 50px solid rgb(122, 2, 2);
+  position: relative;
+  right: -50px;
+  margin-left: 15px;
+}
+.black-button:after,
+.red-button:after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: 50px;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-right: 50px solid rgb(122, 2, 2);
+}
+
+.black-button {
+  border-left: 50px solid black;
+}
+.black-button:after {
+  border-right: 50px solid black;
+}
+
+/* ===============================================CONTROL PANEL===================================================== */
+.outer-control-panel {
+  position: relative;
+  width: 800px;
+  height: 70px;
+  border-radius: 10%;
+  background-color: #1a0800;
+  background-image: url("https://www.transparenttextures.com/patterns/rocky-wall.png");
+  border: 1px solid #110702;
+  margin-left: 260px;
+  margin-top: -20px;
+  border-top: 4px solid #110702;
+}
+
+.chips {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chip-1,
+.chip-2,
+.chip-5 {
+  border: 2px dashed white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: left;
+  margin-left: 5px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+.chip-content {
+  text-align: center;
+  color: white;
+  padding-top: 5px;
+  font-size: 20px;
+}
+.pokerchip,
+.small {
+  margin: 0.5em;
+  font-size: 0.6em;
+  position: relative;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  background: #694444;
+  border-radius: 50%;
+  position: relative;
+  border: 0.5em dashed white;
+  transition: all 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.small {
+  font-size: 0.1em;
+  margin: 0;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 15px;
+  height: 15px;
+}
+
+.pokerchip.red {
+  background: rgb(128, 120, 75);
+}
+
+.pokerchip.blue {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.pokerchip.flat,
+.small.flat {
+  box-shadow: 0 0 0 0.2em #fff;
+}
+
+.pokerchip.flat:hover {
+  transform: rotate(90deg);
+}
+
+.budget {
+  width: 80px;
+  height: 50px;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  border: 1px solid white;
+  text-align: center;
+}
+.budgetNumber {
+  width: 70px;
+  height: 40px;
+  margin-top: 5%;
+  margin-left: 5%;
+  color: white;
+  border: 1px solid white;
+}
+
+.lala {
+  /* border: 2px solid white; */
+  position: absolute;
+  width: 13px;
+  height: 13px;
+}
+
+.big-button {
+  position: absolute;
+  top: 2%;
+  left: 80%;
+  height: 60px;
+  width: 100px;
+  padding-bottom: 10px;
+  background-color: #ccffcc;
+  color: #000000;
+  font-family: "Sansita One", cursive;
+  font-size: 26px;
+  font-weight: 500;
+
+  text-decoration: none;
+  text-transform: capitalize;
+
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+
+  -webkit-box-shadow: 0px 7px 0px #009933, 0px 10px 25px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 7px 0px #009933, 0px 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 7px 0px #009933, 0px 10px 25px rgba(0, 0, 0, 0.5);
+
+  border-color: #25753f;
+  border-width: 10px;
+  border-radius: 40px 100px 100px 100px;
+  padding: 20px;
+}
+
+.big-button:active {
+  box-shadow: 0px 3px 0px #33cc33, 0px 3px 6px rgba(0, 0, 0, 0.9);
+  /* position: relative; */
+  top: 5px;
+}
+.content {
+  position: absolute;
+  top: 0%;
+  left: 15%;
+}
