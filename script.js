@@ -417,7 +417,7 @@ document.querySelector(".spin").addEventListener("click", function() {
 
   //////////////////////////////////////////generate a random number//////////////////////////////////////////
 
-  var luckyNumber = Math.floor(Math.random() * 36 + 1);
+  var luckyNumber = Math.floor(Math.random() * 36);
   /////////////////////////////
 
   //////////////////////////////////find number in objects
