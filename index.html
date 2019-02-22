@@ -13,22 +13,23 @@
     <div class="outer row">
       <div class="inner">
         <div class="tables-wrapper">
-          <div class="lala"><div class="small flat"></div></div>
           <table class="numbers">
             <tr>
-              <td rowspan="3"><div class="number number0">0</div></td>
-              <td><div class="number">3</div></td>
-              <td><div class="number black">6</div></td>
-              <td><div class="number">9</div></td>
-              <td><div class="number">12</div></td>
-              <td><div class="number black">15</div></td>
-              <td><div class="number">18</div></td>
-              <td><div class="number">21</div></td>
-              <td><div class="number black">24</div></td>
-              <td><div class="number">27</div></td>
-              <td><div class="number">30</div></td>
-              <td><div class="number black">33</div></td>
-              <td><div class="number">36</div></td>
+              <td rowspan="3">
+                <div class="numberForCss number number0" data-number="0">0</div>
+              </td>
+              <td><div class="numberForCss">3</div></td>
+              <td><div class="numberForCss black">6</div></td>
+              <td><div class="numberForCss">9</div></td>
+              <td><div class="numberForCss">12</div></td>
+              <td><div class="numberForCss black">15</div></td>
+              <td><div class="numberForCss">18</div></td>
+              <td><div class="numberForCss">21</div></td>
+              <td><div class="numberForCss black">24</div></td>
+              <td><div class="numberForCss">27</div></td>
+              <td><div class="numberForCss">30</div></td>
+              <td><div class="numberForCss black">33</div></td>
+              <td><div class="numberForCss">36</div></td>
               <td>
                 <div data-rows="3,6,9,12,15,18,21,24,27,30,33,36" class="rows">
                   2 to 1
@@ -37,18 +38,18 @@
             </tr>
 
             <tr>
-              <td><div class="number black">2</div></td>
-              <td><div class="number">5</div></td>
-              <td><div class="number black">8</div></td>
-              <td><div class="number black">11</div></td>
-              <td><div class="number">14</div></td>
-              <td><div class="number black">17</div></td>
-              <td><div class="number black">20</div></td>
-              <td><div class="number">23</div></td>
-              <td><div class="number black">26</div></td>
-              <td><div class="number black">29</div></td>
-              <td><div class="number">32</div></td>
-              <td><div class="number black">35</div></td>
+              <td><div class="numberForCss black 2">2</div></td>
+              <td><div class="numberForCss ">5</div></td>
+              <td><div class="numberForCss black">8</div></td>
+              <td><div class="numberForCss black">11</div></td>
+              <td><div class="numberForCss">14</div></td>
+              <td><div class="numberForCss black">17</div></td>
+              <td><div class="numberForCss black">20</div></td>
+              <td><div class="numberForCss">23</div></td>
+              <td><div class="numberForCss black">26</div></td>
+              <td><div class="numberForCss black">29</div></td>
+              <td><div class="numberForCss">32</div></td>
+              <td><div class="numberForCss black">35</div></td>
               <td>
                 <div data-rows="2,5,8,11,14,17,20,23,26,29,32,35" class="rows">
                   2 to 1
@@ -57,18 +58,18 @@
             </tr>
 
             <tr>
-              <td><div class="number">1</div></td>
-              <td><div class="number black">4</div></td>
-              <td><div class="number">7</div></td>
-              <td><div class="number black">10</div></td>
-              <td><div class="number black">13</div></td>
-              <td><div class="number">16</div></td>
-              <td><div class="number">19</div></td>
-              <td><div class="number black">22</div></td>
-              <td><div class="number">25</div></td>
-              <td><div class="number black">28</div></td>
-              <td><div class="number black">31</div></td>
-              <td><div class="number">34</div></td>
+              <td><div class="numberForCss">1</div></td>
+              <td><div class="numberForCss black">4</div></td>
+              <td><div class="numberForCss">7</div></td>
+              <td><div class="numberForCss black">10</div></td>
+              <td><div class="numberForCss black">13</div></td>
+              <td><div class="numberForCss">16</div></td>
+              <td><div class="numberForCss">19</div></td>
+              <td><div class="numberForCss black">22</div></td>
+              <td><div class="numberForCss">25</div></td>
+              <td><div class="numberForCss black">28</div></td>
+              <td><div class="numberForCss black">31</div></td>
+              <td><div class="numberForCss">34</div></td>
               <td>
                 <div data-rows="1,4,7,10,13,16,19,22,25,28,31,34" class="rows">
                   2 to 1
@@ -112,10 +113,12 @@
                 <div data-numbertype="even" class="numberType even">EVEN</div>
               </td>
               <td colspan="2">
-                <div class="color black-button" data-color="black"></div>
+                <div class="color" data-color="black"></div>
+                <div class="black-button"></div>
               </td>
               <td colspan="2">
-                <div class="color red-button" data-color="red"></div>
+                <div class="color" data-color="red"></div>
+                <div class="red-button"></div>
               </td>
               <td colspan="4">
                 <div
@@ -151,23 +154,25 @@
     <div class="outer-control-panel">
       <div class="budget"><div class="budgetNumber"></div></div>
       <div class="chips">
+        <div class="chip-1 pokerchip flat red ">
+          <div class="chip-content">1</div>
+        </div>
+        <div class="chip-2 pokerchip flat gold ">
+          <div class="chip-content">2</div>
+        </div>
+        <div class="chip-5 pokerchip flat black ">
+          <div class="chip-content">5</div>
+        </div>
 
-          <div class="chip-1 pokerchip flat "><div class="chip-content">1</div></div>
-          <div class="chip-2 pokerchip flat red "><div class="chip-content">2</div></div>
-          <div class="chip-5 pokerchip flat blue "><div class="chip-content">5</div></div>
-          
         <!-- <div class="chip-1">1</div>
         <div class="chip-2">2</div>
         <div class="chip-5">5</div> -->
       </div>
       <div id="container" align="center">
         <button class="big-button spin" data-action="submit">
-         <div class="content"> Spin</div>
+          <div class="content">Spin</div>
         </button>
       </div>
-
-      
-      
     </div>
 
     <script src="script.js"></script>

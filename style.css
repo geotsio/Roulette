@@ -52,7 +52,8 @@ body {
   margin-top: 100px;
 }
 
-.number {
+.numberForCss {
+  position: relative;
   text-align: center;
   color: white;
   border: 1px solid #001f0e00;
@@ -87,11 +88,12 @@ body {
   position: relative;
   height: 500px;
   margin-top: -50px;
-  border: 5px solid white;
+  /* border: 5px solid white; */
   width: 1050px;
 }
 
 .dozen {
+  position: relative;
   border: 2px solid rgb(88, 75, 2);
   text-align: center;
   width: 70%;
@@ -104,6 +106,7 @@ body {
 .eighteen,
 .odd,
 .even {
+  position: relative;
   border: 2px solid rgb(88, 75, 2);
   text-align: center;
   width: 40%;
@@ -124,6 +127,7 @@ body {
 }
 
 .rows {
+  position: relative;
   writing-mode: vertical-rl;
   text-orientation: sideways;
   color: rgb(88, 75, 2);
@@ -138,6 +142,14 @@ body {
 }
 
 /* ============================================================COLOR BUTTONS======================================================================= */
+.color {
+  position: absolute;
+
+  height: 57px;
+  width: 127px;
+  z-index: 999;
+}
+
 .black-button,
 .red-button {
   width: 0;
@@ -218,7 +230,7 @@ body {
   box-sizing: border-box;
   width: 50px;
   height: 50px;
-  background: #694444;
+  background: rgb(122, 2, 2);
   border-radius: 50%;
   position: relative;
   border: 0.5em dashed white;
@@ -227,26 +239,32 @@ body {
 }
 
 .small {
-  font-size: 0.1em;
+  font-size: 0.3em;
   margin: 0;
   position: absolute;
-  top: -5%;
-  left: -5%;
-  width: 15px;
-  height: 15px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
 }
 
-.pokerchip.red {
+.red {
+  background: rgb(122, 2, 2);
+}
+.gold {
   background: rgb(128, 120, 75);
 }
 
-.pokerchip.blue {
+.black {
   background: rgba(0, 0, 0, 0.9);
 }
 
 .pokerchip.flat,
 .small.flat {
-  box-shadow: 0 0 0 0.2em #fff;
+  /* box-shadow: 0 0 0 0.2em #fff; */
+  box-shadow: 1px 1px grey;
 }
 
 .pokerchip.flat:hover {
@@ -269,9 +287,10 @@ body {
   margin-left: 5%;
   color: white;
   border: 1px solid white;
+  font-size: 150%;
 }
 
-.lala {
+.sizeOfDivs {
   /* border: 2px solid white; */
   position: absolute;
   width: 13px;
@@ -287,7 +306,7 @@ body {
   padding-bottom: 10px;
   background-color: #ccffcc;
   color: #000000;
-  font-family: "Sansita One", cursive;
+  font-family: "Noto Serif KR", sans-serif;
   font-size: 26px;
   font-weight: 500;
 
@@ -300,16 +319,16 @@ body {
 
   -webkit-box-shadow: 0px 7px 0px #009933, 0px 10px 25px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 7px 0px #009933, 0px 10px 25px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 7px 0px #009933, 0px 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 7px 0px #adb35a, 0px 10px 25px rgba(0, 0, 0, 0.5);
 
-  border-color: #25753f;
+  border-color: #7c8340;
   border-width: 10px;
   border-radius: 40px 100px 100px 100px;
   padding: 20px;
 }
 
 .big-button:active {
-  box-shadow: 0px 3px 0px #33cc33, 0px 3px 6px rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 3px 0px #042c04, 0px 3px 6px rgba(0, 0, 0, 0.9);
   /* position: relative; */
   top: 5px;
 }
@@ -317,4 +336,8 @@ body {
   position: absolute;
   top: 0%;
   left: 15%;
+}
+
+.hoverColor {
+  background-color: rgb(11, 56, 34);
 }
