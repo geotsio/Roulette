@@ -715,10 +715,17 @@ function bets(
   contentOfTarget,
   classOfTarget
 ) {
+  var clicks = 0;
+  var lala = 50;
   [...document.querySelectorAll("." + classOfTarget)].forEach(num => {
     num.addEventListener("click", function(e) {
       if (betOn) {
+        clicks += 1;
         var chipDiv = document.createElement("div");
+        if (clicks > 1) {
+          lala -= 1;
+          chipDiv.style.top = lala + "%";
+        }
 
         // chipDiv.classList.add("small", "flat", "pokerchip", "blue");
         chipDiv.setAttribute(
@@ -798,6 +805,7 @@ document.querySelector(".spin").addEventListener("click", function() {
 
   var luckyNumber = Math.floor(Math.random() * 36);
   /////////////////////////////
+  document.querySelector(".alertNumber").textContent = luckyNumber;
 
   //////////////////////////////////find number in objects
 
@@ -808,6 +816,18 @@ document.querySelector(".spin").addEventListener("click", function() {
       break;
     }
   }
+  if (luckyNumber.color === "red") {
+    document.querySelector(".alertNumber").style.backgroundColor =
+      "rgb(122, 2, 2)";
+  } else {
+    document.querySelector(".alertNumber").style.backgroundColor =
+      luckyNumber.color;
+  }
+
+  document.querySelector(".alertNumber").style.display = "block";
+  setTimeout(function() {
+    document.querySelector(".alertNumber").style.display = "none";
+  }, 2000);
   ////////////////////////
   results(numberOn, listBetOnNumbers, listOfBetsForNumbers, 36);
   results(doubleOn, listBetOnDoubles, listOfBetsForDoubles, 18);

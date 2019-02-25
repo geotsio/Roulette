@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+::selection {
+  background: #fafafa00; /* WebKit/Blink Browsers */
+}
+
 .row {
   max-width: 1140px;
   margin: 0 auto;
@@ -263,8 +267,8 @@ body {
 
 .pokerchip.flat,
 .small.flat {
-  /* box-shadow: 0 0 0 0.2em #fff; */
-  box-shadow: 1px 1px grey;
+  /* box-shadow: 0 0 0 0.1em grey; */
+  box-shadow: 0.2px 0.2px grey;
 }
 
 .pokerchip.flat:hover {
@@ -340,4 +344,21 @@ body {
 
 .hoverColor {
   background-color: rgb(11, 56, 34);
+}
+
+.alertNumber {
+  width: 300px;
+  height: 200px;
+  border: 5px solid white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: rgb(61, 0, 0);
+  text-align: center;
+  font-size: 800%;
+  color: white;
+  display: none;
 }
