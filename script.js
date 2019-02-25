@@ -723,6 +723,7 @@ bets(listOfBetsForColor, listBetOnColor, "color", "color");
 var listBetOnNumberType = [];
 var listOfBetsForNumberType = [];
 bets(listOfBetsForNumberType, listBetOnNumberType, "numbertype", "numberType");
+var listOfTarget = [];
 
 function bets(
   listOfMoneyBets,
@@ -734,6 +735,7 @@ function bets(
     num.addEventListener("click", function(e) {
       if (luckyNumberDisplayOff) {
         if (betOn) {
+          listOfTarget.push(this);
           if (this.clicks === undefined) {
             this.clicks = 1;
           } else {
@@ -748,7 +750,7 @@ function bets(
           );
 
           if (this.clicks > 1) {
-            chipDiv.style.top = 50 - this.clicks + "%";
+            chipDiv.style.top = 50 - this.clicks + 1 + "%";
           }
           this.appendChild(chipDiv);
 
@@ -777,6 +779,26 @@ function bets(
           if (oneEuroOn) {
             bet = 1;
             chipDiv.classList.add("small", "flat", "red");
+            // console.log(this.childNodes);
+            // console.log(this.childNodes.classList);
+            // if (this.clicks % 4 === 0) {
+            //               this.querySelectorAll(".red").forEach(ch => {
+            // ch.remove();
+            //               })
+
+            // [...this.childNodes].forEach(ch => {
+            //   // [...ch.querySelectorAll(".small")].forEach(l => {
+            //   //   l.remove();
+            //   // });
+            //   var cl = ch.classList;
+            //   console.log(ch.className[0]);
+
+            //   // if (ch.className === "small flat red") {
+            //   //   ch.remove();
+            //   //   this.appendChild(chipDiv);
+            //   //   chipDiv.classList.add("small", "flat", "gold");
+            //   // }
+            // });
           } else if (twoEurosOn) {
             chipDiv.classList.add("small", "flat", "gold");
             bet = 2;
@@ -787,7 +809,6 @@ function bets(
           budget -= bet;
           document.querySelector(".budgetNumber").textContent = budget;
 
-          console.log("clicked");
           var sameOn = false;
           var element;
           for (var i = 0; i < listOfNumberBets.length; i++) {
@@ -956,6 +977,10 @@ function reset() {
   clearAr(listBetOnNumberType);
   clearAr(listOfBetsForNumberType);
   [...document.querySelectorAll(".small")].forEach(elem => elem.remove());
+  listOfTarget.forEach(div => {
+    div.clicks = undefined;
+  });
+  clearAr(listOfTarget);
 }
 
 function clearAr(arr) {
