@@ -348,17 +348,31 @@ body {
 
 .alertNumber {
   width: 300px;
-  height: 200px;
-  border: 5px solid white;
+  height: 250px;
+  border: 5px solid rgb(160, 147, 76);
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   z-index: 999;
-  background-color: rgb(61, 0, 0);
+  background-color: #00160a;
   text-align: center;
-  font-size: 800%;
+  font-size: 250%;
   color: white;
   display: none;
+}
+
+.displayLuckyNumber {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin: 4% auto;
+  font-size: 160%;
+  /* padding: 5px; */
+}
+
+.displayWinnings {
+  font-size: 95%;
 }

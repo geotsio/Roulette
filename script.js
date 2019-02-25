@@ -764,7 +764,7 @@ function bets(
           } else if (classOfTarget === "dozen") {
             dozenOn = true;
           } else if (classOfTarget === "eighteen") {
-            doubleOn = true;
+            eighteenOn = true;
           } else if (classOfTarget === "color") {
             colorOn = true;
           } else if (classOfTarget === "numberType") {
@@ -824,7 +824,7 @@ document.querySelector(".spin").addEventListener("click", function() {
 
     var luckyNumber = Math.floor(Math.random() * 36);
     /////////////////////////////
-    document.querySelector(".alertNumber").textContent = luckyNumber;
+    document.querySelector(".displayLuckyNumber").innerHTML = luckyNumber;
 
     //////////////////////////////////find number in objects
 
@@ -836,10 +836,10 @@ document.querySelector(".spin").addEventListener("click", function() {
       }
     }
     if (luckyNumber.color === "red") {
-      document.querySelector(".alertNumber").style.backgroundColor =
+      document.querySelector(".displayLuckyNumber").style.backgroundColor =
         "rgb(122, 2, 2)";
     } else {
-      document.querySelector(".alertNumber").style.backgroundColor =
+      document.querySelector(".displayLuckyNumber").style.backgroundColor =
         luckyNumber.color;
     }
 
@@ -848,7 +848,7 @@ document.querySelector(".spin").addEventListener("click", function() {
     setTimeout(function() {
       document.querySelector(".alertNumber").style.display = "none";
       luckyNumberDisplayOff = true;
-    }, 2000);
+    }, 3000);
     ////////////////////////
     results(numberOn, listBetOnNumbers, listOfBetsForNumbers, 36);
     results(doubleOn, listBetOnDoubles, listOfBetsForDoubles, 18);
@@ -911,6 +911,8 @@ document.querySelector(".spin").addEventListener("click", function() {
         document.querySelector(".budgetNumber").textContent = budget;
       }
     }
+    document.querySelector(".displayWinnings").innerHTML =
+      " Total winnings " + totalWinnings;
     reset();
   }
 });
