@@ -488,7 +488,7 @@ function hoverEffect(nameOfClass, eventType, attribute) {
             [...document.querySelectorAll(".numberForCss")].forEach(n => {
               if (obj.number == n.textContent) {
                 if (event.type === "mouseover") {
-                  e.target.parentElement.classList.add("hoverColor");
+                  this.parentElement.classList.add("hoverColor");
                   n.parentElement.classList.add("hoverColor");
                 } else {
                   n.parentElement.classList.remove("hoverColor");
@@ -505,7 +505,7 @@ function hoverEffect(nameOfClass, eventType, attribute) {
               if (obj.number == n.textContent) {
                 if (event.type === "mouseover") {
                   n.parentElement.classList.add("hoverColor");
-                  e.target.classList.add("hoverColor");
+                  this.classList.add("hoverColor");
                 } else {
                   n.parentElement.classList.remove("hoverColor");
                   e.target.classList.remove("hoverColor");
@@ -539,7 +539,7 @@ function hoverEffect(nameOfClass, eventType, attribute) {
                   nameOfClass === "eighteen" ||
                   nameOfClass === "dozen"
                 ) {
-                  e.target.classList.add("hoverColor");
+                  this.classList.add("hoverColor");
                 }
               } else {
                 nums.parentElement.classList.remove("hoverColor");
