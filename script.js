@@ -847,7 +847,7 @@ function bets(
                 listOfMoneyBets.push(bet);
               }
             } else {
-              alert("choose an other bet");
+              alert("choose another bet");
             }
           } else {
             alert("Not enough money");
@@ -868,7 +868,7 @@ document.querySelector(".spin").addEventListener("click", function() {
 
     //////////////////////////////////////////generate a random number//////////////////////////////////////////
 
-    var luckyNumber = Math.floor(Math.random() * 36);
+    var luckyNumber = Math.floor(Math.random() * 36.999);
     /////////////////////////////
     document.querySelector(".displayLuckyNumber").innerHTML = luckyNumber;
 
