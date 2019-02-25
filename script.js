@@ -413,6 +413,7 @@ var rowsOn = false;
 var oneEuroOn = false;
 var twoEurosOn = false;
 var fiveEurosOn = false;
+var luckyNumberDisplayOff = true;
 
 document.querySelector(".budgetNumber").textContent = budget;
 ///////////////////////////////////////////
@@ -645,24 +646,39 @@ function hoverEffect(nameOfClass, eventType, attribute) {
 /////////////////////////////chip choices////////////////////////////////
 var betOn = false;
 document.querySelector(".chip-1").addEventListener("click", function(e) {
-  oneEuroOn = true;
-  twoEurosOn = false;
-  fiveEurosOn = false;
-  betOn = true;
+  if (luckyNumberDisplayOff) {
+    oneEuroOn = true;
+    twoEurosOn = false;
+    fiveEurosOn = false;
+    betOn = true;
+    document.querySelector(".chip-1").style.boxShadow = " 0px 0px 15px white";
+    document.querySelector(".chip-2").style.boxShadow = " 0px 0px white";
+    document.querySelector(".chip-5").style.boxShadow = " 0px 0px white";
+  }
 });
 
 document.querySelector(".chip-2").addEventListener("click", function(e) {
-  oneEuroOn = false;
-  twoEurosOn = true;
-  fiveEurosOn = false;
-  betOn = true;
+  if (luckyNumberDisplayOff) {
+    oneEuroOn = false;
+    twoEurosOn = true;
+    fiveEurosOn = false;
+    betOn = true;
+    document.querySelector(".chip-2").style.boxShadow = " 0px 0px 15px white";
+    document.querySelector(".chip-1").style.boxShadow = " 0px 0px white";
+    document.querySelector(".chip-5").style.boxShadow = " 0px 0px white";
+  }
 });
 
 document.querySelector(".chip-5").addEventListener("click", function(e) {
-  oneEuroOn = false;
-  twoEurosOn = false;
-  fiveEurosOn = true;
-  betOn = true;
+  if (luckyNumberDisplayOff) {
+    oneEuroOn = false;
+    twoEurosOn = false;
+    fiveEurosOn = true;
+    betOn = true;
+    document.querySelector(".chip-5").style.boxShadow = " 0px 0px 15px white";
+    document.querySelector(".chip-1").style.boxShadow = " 0px 0px white";
+    document.querySelector(".chip-2").style.boxShadow = " 0px 0px white";
+  }
 });
 /////////////////////////////////////Bet choices/////////////////////////////////////////////////////////
 
@@ -719,77 +735,79 @@ function bets(
   var lala = 50;
   [...document.querySelectorAll("." + classOfTarget)].forEach(num => {
     num.addEventListener("click", function(e) {
-      if (betOn) {
-        clicks += 1;
-        var chipDiv = document.createElement("div");
-        if (clicks > 1) {
-          lala -= 1;
-          chipDiv.style.top = lala + "%";
-        }
-
-        // chipDiv.classList.add("small", "flat", "pokerchip", "blue");
-        chipDiv.setAttribute(
-          "data-" + contentOfTarget,
-          e.target.getAttribute("data-" + contentOfTarget)
-        );
-        e.target.appendChild(chipDiv);
-
-        if (classOfTarget === "number") {
-          numberOn = true;
-        } else if (classOfTarget === "double") {
-          doubleOn = true;
-        } else if (classOfTarget === "threes") {
-          threesOn = true;
-        } else if (classOfTarget === "quadrants") {
-          quadrantsOn = true;
-        } else if (classOfTarget === "rows") {
-          rowsOn = true;
-        } else if (classOfTarget === "dozen") {
-          dozenOn = true;
-        } else if (classOfTarget === "eighteen") {
-          doubleOn = true;
-        } else if (classOfTarget === "color") {
-          colorOn = true;
-        } else if (classOfTarget === "numberType") {
-          numberTypeOn = true;
-        } else if (classOfTarget === "sixes") {
-          sixesOn = true;
-        }
-
-        if (oneEuroOn) {
-          bet = 1;
-          chipDiv.classList.add("small", "flat", "red");
-        } else if (twoEurosOn) {
-          chipDiv.classList.add("small", "flat", "gold");
-          bet = 2;
-        } else if (fiveEurosOn) {
-          chipDiv.classList.add("small", "flat", "black");
-          bet = 5;
-        }
-        budget -= bet;
-        document.querySelector(".budgetNumber").textContent = budget;
-
-        console.log("clicked");
-        var sameOn = false;
-        var element;
-        for (var i = 0; i < listOfNumberBets.length; i++) {
-          if (
-            e.target.getAttribute("data-" + contentOfTarget) ===
-            listOfNumberBets[i]
-          ) {
-            sameOn = true;
-            element = i;
-            break;
+      if (luckyNumberDisplayOff) {
+        if (betOn) {
+          clicks += 1;
+          var chipDiv = document.createElement("div");
+          if (clicks > 1) {
+            lala -= 1;
+            chipDiv.style.top = lala + "%";
           }
-        }
 
-        if (sameOn) {
-          listOfMoneyBets[element] += bet;
-        } else {
-          listOfNumberBets.push(
+          // chipDiv.classList.add("small", "flat", "pokerchip", "blue");
+          chipDiv.setAttribute(
+            "data-" + contentOfTarget,
             e.target.getAttribute("data-" + contentOfTarget)
           );
-          listOfMoneyBets.push(bet);
+          e.target.appendChild(chipDiv);
+
+          if (classOfTarget === "number") {
+            numberOn = true;
+          } else if (classOfTarget === "double") {
+            doubleOn = true;
+          } else if (classOfTarget === "threes") {
+            threesOn = true;
+          } else if (classOfTarget === "quadrants") {
+            quadrantsOn = true;
+          } else if (classOfTarget === "rows") {
+            rowsOn = true;
+          } else if (classOfTarget === "dozen") {
+            dozenOn = true;
+          } else if (classOfTarget === "eighteen") {
+            doubleOn = true;
+          } else if (classOfTarget === "color") {
+            colorOn = true;
+          } else if (classOfTarget === "numberType") {
+            numberTypeOn = true;
+          } else if (classOfTarget === "sixes") {
+            sixesOn = true;
+          }
+
+          if (oneEuroOn) {
+            bet = 1;
+            chipDiv.classList.add("small", "flat", "red");
+          } else if (twoEurosOn) {
+            chipDiv.classList.add("small", "flat", "gold");
+            bet = 2;
+          } else if (fiveEurosOn) {
+            chipDiv.classList.add("small", "flat", "black");
+            bet = 5;
+          }
+          budget -= bet;
+          document.querySelector(".budgetNumber").textContent = budget;
+
+          console.log("clicked");
+          var sameOn = false;
+          var element;
+          for (var i = 0; i < listOfNumberBets.length; i++) {
+            if (
+              e.target.getAttribute("data-" + contentOfTarget) ===
+              listOfNumberBets[i]
+            ) {
+              sameOn = true;
+              element = i;
+              break;
+            }
+          }
+
+          if (sameOn) {
+            listOfMoneyBets[element] += bet;
+          } else {
+            listOfNumberBets.push(
+              e.target.getAttribute("data-" + contentOfTarget)
+            );
+            listOfMoneyBets.push(bet);
+          }
         }
       }
     });
@@ -799,98 +817,102 @@ function bets(
 ///////////////////////spin roulette////////////////////////////////////////
 
 document.querySelector(".spin").addEventListener("click", function() {
-  var totalWinnings = 0;
+  if (luckyNumberDisplayOff) {
+    var totalWinnings = 0;
 
-  //////////////////////////////////////////generate a random number//////////////////////////////////////////
+    //////////////////////////////////////////generate a random number//////////////////////////////////////////
 
-  var luckyNumber = Math.floor(Math.random() * 36);
-  /////////////////////////////
-  document.querySelector(".alertNumber").textContent = luckyNumber;
+    var luckyNumber = Math.floor(Math.random() * 36);
+    /////////////////////////////
+    document.querySelector(".alertNumber").textContent = luckyNumber;
 
-  //////////////////////////////////find number in objects
+    //////////////////////////////////find number in objects
 
-  for (var i = 0; i < numberList.length; i++) {
-    if (luckyNumber === numberList[i].number) {
-      luckyNumber = numberList[i];
-      console.log(luckyNumber);
-      break;
-    }
-  }
-  if (luckyNumber.color === "red") {
-    document.querySelector(".alertNumber").style.backgroundColor =
-      "rgb(122, 2, 2)";
-  } else {
-    document.querySelector(".alertNumber").style.backgroundColor =
-      luckyNumber.color;
-  }
-
-  document.querySelector(".alertNumber").style.display = "block";
-  setTimeout(function() {
-    document.querySelector(".alertNumber").style.display = "none";
-  }, 2000);
-  ////////////////////////
-  results(numberOn, listBetOnNumbers, listOfBetsForNumbers, 36);
-  results(doubleOn, listBetOnDoubles, listOfBetsForDoubles, 18);
-  results(threesOn, listBetOnThrees, listOfBetsForThrees, 12);
-  results(quadrantsOn, listBetOnQuadrants, listOfBetsForQuadrants, 9);
-  results(sixesOn, listBetOnSixes, listOfBetsForSixes, 6);
-  results(dozenOn, listBetOnDozen, listOfBetsForDozen, 3);
-  results(eighteenOn, listBetOnEighteen, listOfBetsForEighteen, 2);
-  results(rowsOn, listBetOnRows, listOfBetsForRows, 3);
-  resultsForColor(colorOn, listBetOnColor, listOfBetsForColor, 2);
-  resultsForNumberType(
-    numberTypeOn,
-    listBetOnNumberType,
-    listOfBetsForNumberType,
-    2
-  );
-
-  function resultsForColor(typeOn, listOfColors, listOfBets, multiplier) {
-    if (typeOn) {
-      for (var i = 0; i < listOfColors.length; i++) {
-        if (luckyNumber.color === listOfColors[i]) {
-          totalWinnings += listOfBets[i] * multiplier;
-        }
+    for (var i = 0; i < numberList.length; i++) {
+      if (luckyNumber === numberList[i].number) {
+        luckyNumber = numberList[i];
+        console.log(luckyNumber);
+        break;
       }
-      budget += totalWinnings;
-      document.querySelector(".budgetNumber").textContent = budget;
     }
-  }
-
-  function resultsForNumberType(
-    typeOn,
-    listOfNumberTypes,
-    listOfBets,
-    multiplier
-  ) {
-    if (typeOn) {
-      for (var i = 0; i < listOfNumberTypes.length; i++) {
-        if (luckyNumber.numberKind === listOfNumberTypes[i]) {
-          totalWinnings += listOfBets[i] * multiplier;
-        }
-      }
-      budget += totalWinnings;
-      document.querySelector(".budgetNumber").textContent = budget;
+    if (luckyNumber.color === "red") {
+      document.querySelector(".alertNumber").style.backgroundColor =
+        "rgb(122, 2, 2)";
+    } else {
+      document.querySelector(".alertNumber").style.backgroundColor =
+        luckyNumber.color;
     }
-  }
 
-  function results(typeOn, listOfNumbers, listOfBets, multiplier) {
-    if (typeOn) {
-      for (var i = 0; i < listOfNumbers.length; i++) {
-        listOfNumbers[i] = listOfNumbers[i].split(",").map(function(item) {
-          return parseInt(item, 10);
-        });
-        for (var j = 0; j < listOfNumbers[i].length; j++) {
-          if (luckyNumber.number === listOfNumbers[i][j]) {
+    document.querySelector(".alertNumber").style.display = "block";
+    luckyNumberDisplayOff = false;
+    setTimeout(function() {
+      document.querySelector(".alertNumber").style.display = "none";
+      luckyNumberDisplayOff = true;
+    }, 2000);
+    ////////////////////////
+    results(numberOn, listBetOnNumbers, listOfBetsForNumbers, 36);
+    results(doubleOn, listBetOnDoubles, listOfBetsForDoubles, 18);
+    results(threesOn, listBetOnThrees, listOfBetsForThrees, 12);
+    results(quadrantsOn, listBetOnQuadrants, listOfBetsForQuadrants, 9);
+    results(sixesOn, listBetOnSixes, listOfBetsForSixes, 6);
+    results(dozenOn, listBetOnDozen, listOfBetsForDozen, 3);
+    results(eighteenOn, listBetOnEighteen, listOfBetsForEighteen, 2);
+    results(rowsOn, listBetOnRows, listOfBetsForRows, 3);
+    resultsForColor(colorOn, listBetOnColor, listOfBetsForColor, 2);
+    resultsForNumberType(
+      numberTypeOn,
+      listBetOnNumberType,
+      listOfBetsForNumberType,
+      2
+    );
+
+    function resultsForColor(typeOn, listOfColors, listOfBets, multiplier) {
+      if (typeOn) {
+        for (var i = 0; i < listOfColors.length; i++) {
+          if (luckyNumber.color === listOfColors[i]) {
             totalWinnings += listOfBets[i] * multiplier;
           }
         }
+        budget += totalWinnings;
+        document.querySelector(".budgetNumber").textContent = budget;
       }
-      budget += totalWinnings;
-      document.querySelector(".budgetNumber").textContent = budget;
     }
+
+    function resultsForNumberType(
+      typeOn,
+      listOfNumberTypes,
+      listOfBets,
+      multiplier
+    ) {
+      if (typeOn) {
+        for (var i = 0; i < listOfNumberTypes.length; i++) {
+          if (luckyNumber.numberKind === listOfNumberTypes[i]) {
+            totalWinnings += listOfBets[i] * multiplier;
+          }
+        }
+        budget += totalWinnings;
+        document.querySelector(".budgetNumber").textContent = budget;
+      }
+    }
+
+    function results(typeOn, listOfNumbers, listOfBets, multiplier) {
+      if (typeOn) {
+        for (var i = 0; i < listOfNumbers.length; i++) {
+          listOfNumbers[i] = listOfNumbers[i].split(",").map(function(item) {
+            return parseInt(item, 10);
+          });
+          for (var j = 0; j < listOfNumbers[i].length; j++) {
+            if (luckyNumber.number === listOfNumbers[i][j]) {
+              totalWinnings += listOfBets[i] * multiplier;
+            }
+          }
+        }
+        budget += totalWinnings;
+        document.querySelector(".budgetNumber").textContent = budget;
+      }
+    }
+    reset();
   }
-  reset();
 });
 
 function reset() {
@@ -904,10 +926,10 @@ function reset() {
   dozenOn = false;
   eighteenOn = false;
   rowsOn = false;
-  oneEuroOn = false;
-  twoEurosOn = false;
-  fiveEurosOn = false;
-  betOn = false;
+  // oneEuroOn = false;
+  // twoEurosOn = false;
+  // fiveEurosOn = false;
+  // betOn = false;
   clearAr(listBetOnNumbers);
   clearAr(listOfBetsForNumbers);
   clearAr(listBetOnDoubles);
