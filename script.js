@@ -644,6 +644,7 @@ function hoverEffect(nameOfClass, eventType, attribute) {
 
 /////////////////////////////chip choices////////////////////////////////
 var betOn = false;
+var bet = 0;
 document.querySelector(".chip-1").addEventListener("click", function(e) {
   if (luckyNumberDisplayOff) {
     oneEuroOn = true;
@@ -653,6 +654,7 @@ document.querySelector(".chip-1").addEventListener("click", function(e) {
     document.querySelector(".chip-1").style.boxShadow = " 0px 0px 15px white";
     document.querySelector(".chip-2").style.boxShadow = " 0px 0px white";
     document.querySelector(".chip-5").style.boxShadow = " 0px 0px white";
+    bet = 1;
   }
 });
 
@@ -665,6 +667,7 @@ document.querySelector(".chip-2").addEventListener("click", function(e) {
     document.querySelector(".chip-2").style.boxShadow = " 0px 0px 15px white";
     document.querySelector(".chip-1").style.boxShadow = " 0px 0px white";
     document.querySelector(".chip-5").style.boxShadow = " 0px 0px white";
+    bet = 2;
   }
 });
 
@@ -677,12 +680,12 @@ document.querySelector(".chip-5").addEventListener("click", function(e) {
     document.querySelector(".chip-5").style.boxShadow = " 0px 0px 15px white";
     document.querySelector(".chip-1").style.boxShadow = " 0px 0px white";
     document.querySelector(".chip-2").style.boxShadow = " 0px 0px white";
+    bet = 5;
   }
 });
 /////////////////////////////////////Bet choices/////////////////////////////////////////////////////////
 
 //////////////////////////////////choose number
-var bet = 0;
 
 var listBetOnNumbers = [];
 var listOfBetsForNumbers = [];
@@ -735,101 +738,122 @@ function bets(
     num.addEventListener("click", function(e) {
       if (luckyNumberDisplayOff) {
         if (betOn) {
-          listOfTarget.push(this);
-          if (this.clicks === undefined) {
-            this.clicks = 1;
-          } else {
-            this.clicks += 1;
-          }
-          var chipDiv = document.createElement("div");
+          if (budget > 0) {
+            if (budget >= bet) {
+              listOfTarget.push(this);
+              if (this.clicks === undefined) {
+                this.clicks = 1;
+              } else {
+                this.clicks += 1;
+              }
+              var chipDiv = document.createElement("div");
 
-          // chipDiv.classList.add("small", "flat", "pokerchip", "blue");
-          chipDiv.setAttribute(
-            "data-" + contentOfTarget,
-            e.target.getAttribute("data-" + contentOfTarget)
-          );
+              // chipDiv.classList.add("small", "flat", "pokerchip", "blue");
+              chipDiv.setAttribute(
+                "data-" + contentOfTarget,
+                e.target.getAttribute("data-" + contentOfTarget)
+              );
 
-          if (this.clicks > 1) {
-            chipDiv.style.top = 50 - this.clicks + 1 + "%";
-          }
-          this.appendChild(chipDiv);
+              if (this.clicks > 1) {
+                chipDiv.style.top = 50 - this.clicks + 1 + "%";
+              }
+              this.appendChild(chipDiv);
 
-          if (classOfTarget === "number") {
-            numberOn = true;
-          } else if (classOfTarget === "double") {
-            doubleOn = true;
-          } else if (classOfTarget === "threes") {
-            threesOn = true;
-          } else if (classOfTarget === "quadrants") {
-            quadrantsOn = true;
-          } else if (classOfTarget === "rows") {
-            rowsOn = true;
-          } else if (classOfTarget === "dozen") {
-            dozenOn = true;
-          } else if (classOfTarget === "eighteen") {
-            eighteenOn = true;
-          } else if (classOfTarget === "color") {
-            colorOn = true;
-          } else if (classOfTarget === "numberType") {
-            numberTypeOn = true;
-          } else if (classOfTarget === "sixes") {
-            sixesOn = true;
-          }
+              if (classOfTarget === "number") {
+                numberOn = true;
+              } else if (classOfTarget === "double") {
+                doubleOn = true;
+              } else if (classOfTarget === "threes") {
+                threesOn = true;
+              } else if (classOfTarget === "quadrants") {
+                quadrantsOn = true;
+              } else if (classOfTarget === "rows") {
+                rowsOn = true;
+              } else if (classOfTarget === "dozen") {
+                dozenOn = true;
+              } else if (classOfTarget === "eighteen") {
+                eighteenOn = true;
+              } else if (classOfTarget === "color") {
+                colorOn = true;
+              } else if (classOfTarget === "numberType") {
+                numberTypeOn = true;
+              } else if (classOfTarget === "sixes") {
+                sixesOn = true;
+              }
 
-          if (oneEuroOn) {
-            bet = 1;
-            chipDiv.classList.add("small", "flat", "red");
-            // console.log(this.childNodes);
-            // console.log(this.childNodes.classList);
-            // if (this.clicks % 4 === 0) {
-            //               this.querySelectorAll(".red").forEach(ch => {
-            // ch.remove();
-            //               })
+              if (oneEuroOn) {
+                bet = 1;
+                chipDiv.classList.add("small", "flat", "red");
+                // console.log(this.childNodes);
+                // console.log(this.childNodes.classList);
+                // if (this.clicks % 10 === 0) {
+                //   //               this.querySelectorAll(".red").forEach(ch => {
+                //   // ch.remove();
+                //   //               })
 
-            // [...this.childNodes].forEach(ch => {
-            //   // [...ch.querySelectorAll(".small")].forEach(l => {
-            //   //   l.remove();
-            //   // });
-            //   var cl = ch.classList;
-            //   console.log(ch.className[0]);
+                //   [...this.childNodes].forEach(ch => {
+                //     console.log(ch.nodeName);
+                //     if (ch.className === "small flat red") {
+                //       ch.remove();
+                //     }
+                //   });
 
-            //   // if (ch.className === "small flat red") {
-            //   //   ch.remove();
-            //   //   this.appendChild(chipDiv);
-            //   //   chipDiv.classList.add("small", "flat", "gold");
-            //   // }
-            // });
-          } else if (twoEurosOn) {
-            chipDiv.classList.add("small", "flat", "gold");
-            bet = 2;
-          } else if (fiveEurosOn) {
-            chipDiv.classList.add("small", "flat", "black");
-            bet = 5;
-          }
-          budget -= bet;
-          document.querySelector(".budgetNumber").textContent = budget;
+                //   this.appendChild(chipDiv);
+                //   chipDiv.classList.add("small", "flat", "black");
+                //   chipDiv.style.top = "50%";
 
-          var sameOn = false;
-          var element;
-          for (var i = 0; i < listOfNumberBets.length; i++) {
-            if (
-              e.target.getAttribute("data-" + contentOfTarget) ===
-              listOfNumberBets[i]
-            ) {
-              sameOn = true;
-              element = i;
-              break;
+                //   listOfTarget.forEach(div => {
+                //     div.clicks = undefined;
+                //   });
+                // }
+                //   var cl = ch.classList;
+                //   console.log(ch.className[0]);
+
+                //   // if (ch.className === "small flat red") {
+                //   //   ch.remove();
+                //   //   this.appendChild(chipDiv);
+                //   //   chipDiv.classList.add("small", "flat", "gold");
+                //   // }
+                // });
+              } else if (twoEurosOn) {
+                chipDiv.classList.add("small", "flat", "gold");
+                bet = 2;
+              } else if (fiveEurosOn) {
+                chipDiv.classList.add("small", "flat", "black");
+                bet = 5;
+              }
+              budget -= bet;
+              document.querySelector(".budgetNumber").textContent = budget;
+
+              var sameOn = false;
+              var element;
+              for (var i = 0; i < listOfNumberBets.length; i++) {
+                if (
+                  e.target.getAttribute("data-" + contentOfTarget) ===
+                  listOfNumberBets[i]
+                ) {
+                  sameOn = true;
+                  element = i;
+                  break;
+                }
+              }
+
+              if (sameOn) {
+                listOfMoneyBets[element] += bet;
+              } else {
+                listOfNumberBets.push(
+                  e.target.getAttribute("data-" + contentOfTarget)
+                );
+                listOfMoneyBets.push(bet);
+              }
+            } else {
+              alert("choose an other bet");
             }
-          }
-
-          if (sameOn) {
-            listOfMoneyBets[element] += bet;
           } else {
-            listOfNumberBets.push(
-              e.target.getAttribute("data-" + contentOfTarget)
-            );
-            listOfMoneyBets.push(bet);
+            alert("Not enough money");
           }
+        } else {
+          alert("Please choose a bet");
         }
       }
     });
