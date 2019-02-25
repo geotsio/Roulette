@@ -192,7 +192,7 @@ body {
   background-color: #1a0800;
   background-image: url("https://www.transparenttextures.com/patterns/rocky-wall.png");
   border: 1px solid #110702;
-  margin-left: 260px;
+  margin: 0 auto;
   margin-top: -20px;
   border-top: 4px solid #110702;
 }

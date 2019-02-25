@@ -730,25 +730,27 @@ function bets(
   contentOfTarget,
   classOfTarget
 ) {
-  var clicks = 0;
-  var lala = 50;
   [...document.querySelectorAll("." + classOfTarget)].forEach(num => {
     num.addEventListener("click", function(e) {
       if (luckyNumberDisplayOff) {
         if (betOn) {
-          clicks += 1;
-          var chipDiv = document.createElement("div");
-          if (clicks > 1) {
-            lala -= 1;
-            chipDiv.style.top = lala + "%";
+          if (this.clicks === undefined) {
+            this.clicks = 1;
+          } else {
+            this.clicks += 1;
           }
+          var chipDiv = document.createElement("div");
 
           // chipDiv.classList.add("small", "flat", "pokerchip", "blue");
           chipDiv.setAttribute(
             "data-" + contentOfTarget,
             e.target.getAttribute("data-" + contentOfTarget)
           );
-          e.target.appendChild(chipDiv);
+
+          if (this.clicks > 1) {
+            chipDiv.style.top = 50 - this.clicks + "%";
+          }
+          this.appendChild(chipDiv);
 
           if (classOfTarget === "number") {
             numberOn = true;
